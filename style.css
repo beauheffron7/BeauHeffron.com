@@ -1,16 +1,223 @@
-body, html {
-  height: 100%;
+:root {
+  --accent: #3b82f6;
+  --bg: #ffffff;
+  --text: #1e1e1e;
+  --light: #f9fafb;
 }
 
-.bg { 
-  /* The image used */
-  background-image: url("http://newscenter.sdsu.edu/sdsu_newscenter/images/stories/8-30-17_Hispanic_Outlook_589x325.jpg");
+body.dark-mode {
+  --accent: #60a5fa;
+  --bg: #0f172a;
+  --text: #f1f5f9;
+  --light: #1e293b;
+}
 
-  /* Full height */
-  height: 100%; 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  /* Center and scale the image nicely */
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+.container {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section {
+  padding: 80px 0;
+}
+
+.section.alt {
+  background-color: var(--light);
+  transition: background 0.4s ease;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.hero {
+  text-align: center;
+  padding: 140px 20px 100px;
+  background: linear-gradient(135deg, var(--accent) 0%, #2563eb 100%);
+  color: white;
+  transition: background 0.4s ease;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+}
+
+.hero h2 {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+
+.hero p {
+  margin-top: 20px;
+  font-size: 1.1rem;
+}
+
+.hero-buttons {
+  margin-top: 30px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn.primary {
+  background: white;
+  color: var(--accent);
+}
+
+.btn.primary:hover {
+  background: #f1f5f9;
+}
+
+.btn.secondary {
+  border: 2px solid white;
+  color: white;
+  margin-left: 10px;
+}
+
+.btn.secondary:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--light);
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  transition: background 0.4s ease;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links a {
+  color: var(--text);
+  text-decoration: none;
+  margin: 0 12px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+/* Theme toggle */
+#theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: var(--text);
+  transition: color 0.3s ease;
+}
+
+#theme-toggle:hover {
+  color: var(--accent);
+}
+
+/* Lists, skills, contact */
+.experience-list {
+  list-style: none;
+}
+
+.experience-list li {
+  margin-bottom: 25px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.skills-grid span {
+  background-color: var(--light);
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 600;
+  transition: background 0.4s ease;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+}
+
+.contact-list li {
+  margin: 10px 0;
+}
+
+.contact-list a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+footer {
+  text-align: center;
+  padding: 30px 0;
+  background-color: var(--light);
+  font-size: 0.9rem;
+  transition: background 0.4s ease;
+}
+
+/* Animations */
+.hidden {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero h1 { font-size: 2rem; }
+  .hero h2 { font-size: 1.1rem; }
+  .nav-links {
+    flex-wrap: wrap;
+    text-align: center;
+  }
 }
